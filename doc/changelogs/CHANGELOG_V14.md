@@ -6,9 +6,13 @@
 
 <table>
 <tr>
+<th>LTS 'Fermium'</th>
 <th>Current</th>
 </tr>
 <tr>
+<td>
+<a href="#14.15.0">14.15.0</a><br/>
+</td>
 <td>
 <a href="#14.14.0">14.14.0</a><br/>
 <a href="#14.13.0">14.13.0</a><br/>
@@ -45,6 +49,20 @@
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
+
+<a id="14.15.0"></a>
+## 2020-10-27, Version 14.15.0 'Fermium' (LTS), @richardlau
+
+### Notable Changes
+
+This release marks the transition of Node.js 14.x into Long Term Support (LTS)
+with the codename 'Fermium'. The 14.x release line now moves into "Active LTS"
+and will remain so until October 2021. After that time, it will move into
+"Maintenance" until end of life in April 2023.
+
+### Commits
+
+* [[`7f788573b3`](https://github.com/nodejs/node/commit/7f788573b3)] - ***Revert*** "**test**: mark test-webcrypto-encrypt-decrypt-aes flaky" (Myles Borins) [#35666](https://github.com/nodejs/node/pull/35666)
 
 <a id="14.14.0"></a>
 ## 2020-10-15, Version 14.14.0 (Current), @MylesBorins
