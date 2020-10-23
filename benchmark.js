@@ -69,8 +69,8 @@
                     throw new Error("invalid operation " + operation);
                 }
             });
-            // debug
-            // console.log(operation + " " + filename);
+        // debug
+        // console.log(operation + " " + filename);
         }
         cleanup();
         timeStart = Date.now();
@@ -100,7 +100,9 @@
         let timeStart;
         function fsOperation(filename) {
             if (modeMkdir === "fs.mkdirSync") {
-                fs.mkdirSync(path.dirname(filename), {recursive: true});
+                fs.mkdirSync(path.dirname(filename), {
+                    recursive: true
+                });
             }
             switch (operation) {
             case "fs.appendFileSync":
