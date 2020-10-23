@@ -1,0 +1,1230 @@
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  895 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  968 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1058 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  900 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1012 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1601 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  980 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1610 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  861 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  679 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  987 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  925 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  940 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1704 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  895 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1613 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  960 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  573 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1003 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  834 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  984 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1597 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  915 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1547 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  815 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  752 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  998 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  935 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1010 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1635 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1006 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1536 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  959 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  550 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1039 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed - 1006 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  954 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1708 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  982 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1640 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  951 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  742 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  979 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed - 1022 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  995 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1639 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  930 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1598 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  956 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  853 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  959 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  721 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1042 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1587 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1003 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1525 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  941 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  828 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  966 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  908 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  984 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1577 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  967 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1706 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  906 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  652 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  921 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  769 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1017 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1640 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1026 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1683 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  985 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  847 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  923 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  713 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  987 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1636 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  922 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1631 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  949 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  861 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1107 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  591 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  970 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1694 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  952 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1645 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed - 1034 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  684 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1059 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  856 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1009 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1633 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  972 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1581 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  974 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  626 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1003 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  636 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1032 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1634 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1091 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1633 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  919 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  838 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  875 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  577 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1019 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1681 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  999 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1715 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  908 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  590 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1068 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  556 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1045 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1756 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1011 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1614 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  829 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  705 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1040 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed - 1026 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  961 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1583 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1006 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1574 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  941 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed - 1154 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  806 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  635 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  950 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1583 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1045 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1558 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  875 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed - 1104 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  982 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed - 1001 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  980 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1679 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  970 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1696 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  996 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  731 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  981 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed - 1035 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  971 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1566 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed -  962 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1689 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  868 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  924 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  985 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  654 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1014 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1604 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1001 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1618 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  970 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  559 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  987 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  619 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1056 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1477 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1034 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1554 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  969 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  581 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  957 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  561 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  999 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 2178 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1012 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1459 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  935 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  584 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  985 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  584 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1152 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1604 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1000 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1505 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  973 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  643 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1036 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  614 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed -  969 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1497 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1017 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1587 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  921 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  649 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1011 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  641 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1015 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1597 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1083 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1731 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  984 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  605 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  885 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  570 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1027 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1613 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1026 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1571 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  949 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  531 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  951 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  563 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1016 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1722 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1050 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1603 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  957 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  538 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  966 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  598 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1060 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1646 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1036 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 2023 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  879 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  696 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed -  930 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  556 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1047 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1714 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1056 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1472 ms
+{
+  node: '16.0.0-pre',
+  v8: '8.6.395.17-node.16',
+  uv: '1.40.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.16.1',
+  modules: '88',
+  nghttp2: '1.41.0',
+  napi: '7',
+  llhttp: '2.1.3',
+  openssl: '1.1.1g',
+  cldr: '37.0',
+  icu: '67.1',
+  tz: '2020a',
+  unicode: '13.0'
+}
+
+cleanup .test/
+1000 * (fs.writeFile      + no-mkdir      ) - time elapsed -  951 ms
+
+cleanup .test/
+1000 * (fs.writeFile      + fs.mkdir      ) - time elapsed -  602 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + no-mkdir      ) - time elapsed - 1031 ms
+
+cleanup .test/
+1000 * (fs.appendFile     + fs.mkdir      ) - time elapsed -  566 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + no-mkdir      ) - time elapsed - 1009 ms
+
+cleanup .test/
+1000 * (fs.writeFileSync  + fs.mkdirSync  ) - time elapsed - 1492 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + no-mkdir      ) - time elapsed - 1033 ms
+
+cleanup .test/
+1000 * (fs.appendFileSync + fs.mkdirSync  ) - time elapsed - 1601 ms
