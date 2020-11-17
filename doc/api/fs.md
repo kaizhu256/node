@@ -1344,6 +1344,9 @@ try {
 <!-- YAML
 added: v0.6.7
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/35775
+    description: add option `mkdirp`.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/12562
     description: The `callback` parameter is no longer optional. Not passing
@@ -1366,6 +1369,8 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
+  * `mkdirp` {boolean} "mkdir -p" directories in `path` if they do not exist.
+    **Default:** `false`.
 * `callback` {Function}
   * `err` {Error}
 
@@ -1405,6 +1410,9 @@ fs.open('message.txt', 'a', (err, fd) => {
 <!-- YAML
 added: v0.6.7
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/35775
+    description: add option `mkdirp`.
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7831
     description: The passed `options` object will never be modified.
@@ -1419,6 +1427,8 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
+  * `mkdirp` {boolean} "mkdir -p" directories in `path` if they do not exist.
+    **Default:** `false`.
 
 Synchronously append data to a file, creating the file if it does not yet
 exist. `data` can be a string or a [`Buffer`][].
@@ -2883,6 +2893,35 @@ Returns an integer representing the file descriptor.
 
 For detailed information, see the documentation of the asynchronous version of
 this API: [`fs.open()`][].
+
+## `fs.openWithMkdirp(path[, flags[, mode]], callback)`
+<!-- YAML
+added: REPLACEME
+-->
+
+* `path` {string|Buffer|URL}
+* `flags` {string|number} See [support of file system `flags`][].
+  **Default:** `'r'`.
+* `mode` {string|integer} **Default:** `0o666` (readable and writable)
+* `callback` {Function}
+  * `err` {Error}
+  * `fd` {integer}
+
+Behaves like [`fs.open()`][], except will "mkdir -p" directories in `file`
+if they do not exist
+
+## `fs.openWithMkdirpSync(path[, flags, mode])`
+<!-- YAML
+added: REPLACEME
+-->
+
+* `path` {string|Buffer|URL}
+* `flags` {string|number} See [support of file system `flags`][].
+  **Default:** `'r'`.
+* `mode` {string|integer} **Default:** `0o666` (readable and writable)
+
+Behaves like `fs.openSync()`, except will "mkdir -p" directories in `file`
+if they do not exist
 
 ## `fs.read(fd, buffer, offset, length, position, callback)`
 <!-- YAML
@@ -4385,6 +4424,9 @@ details.
 <!-- YAML
 added: v0.1.29
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/35775
+    description: add option `mkdirp`.
   - version: v15.2.0
     pr-url: https://github.com/nodejs/node/pull/35993
     description: The options argument may include an AbortSignal to abort an
@@ -4423,6 +4465,8 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
+  * `mkdirp` {boolean} "mkdir -p" directories in `file` if they do not exist.
+    **Default:** `false`.
   * `signal` {AbortSignal} allows aborting an in-progress writeFile
 * `callback` {Function}
   * `err` {Error}
@@ -4507,6 +4551,9 @@ to contain only `', World'`.
 <!-- YAML
 added: v0.1.29
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/35775
+    description: add option `mkdirp`.
   - version: v14.12.0
     pr-url: https://github.com/nodejs/node/pull/34993
     description: The `data` parameter will stringify an object with an
@@ -4533,6 +4580,8 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
+  * `mkdirp` {boolean} "mkdir -p" directories in `file` if they do not exist.
+    **Default:** `false`.
 
 Returns `undefined`.
 
