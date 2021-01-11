@@ -13,7 +13,7 @@ const {
 
 const { once } = require('events');
 
-const { promisify } = require('util');
+const { promisify, inspect } = require('util');
 const delay = promisify(setTimeout);
 
 // The globals are defined.
@@ -531,4 +531,42 @@ let asyncTest = Promise.resolve();
   target.addEventListener('foo', () => output.push(4));
   target.dispatchEvent(new Event('foo'));
   deepStrictEqual(output, [1, 2, 3, 4]);
+}
+{
+  const et = new EventTarget();
+  const listener = common.mustNotCall();
+  et.addEventListener('foo', common.mustCall((e) => {
+    et.removeEventListener('foo', listener);
+  }));
+  et.addEventListener('foo', listener);
+  et.dispatchEvent(new Event('foo'));
+}
+
+{
+  const ev = new Event('test');
+  const evConstructorName = inspect(ev, {
+    depth: -1
+  });
+  strictEqual(evConstructorName, 'Event');
+
+  const inspectResult = inspect(ev, {
+    depth: 1
+  });
+  ok(inspectResult.includes('Event'));
+}
+
+{
+  const et = new EventTarget();
+  const inspectResult = inspect(et, {
+    depth: 1
+  });
+  ok(inspectResult.includes('EventTarget'));
+}
+
+{
+  const ev = new Event('test');
+  strictEqual(ev.constructor.name, 'Event');
+
+  const et = new EventTarget();
+  strictEqual(et.constructor.name, 'EventTarget');
 }

@@ -343,6 +343,7 @@ constexpr size_t kFsStatsBufferLength =
   V(options_string, "options")                                                 \
   V(order_string, "order")                                                     \
   V(output_string, "output")                                                   \
+  V(overlapped_string, "overlapped")                                           \
   V(parse_error_string, "Parse Error")                                         \
   V(password_string, "password")                                               \
   V(path_string, "path")                                                       \
@@ -475,6 +476,7 @@ constexpr size_t kFsStatsBufferLength =
   V(tty_constructor_template, v8::FunctionTemplate)                            \
   V(write_wrap_template, v8::ObjectTemplate)                                   \
   V(worker_heap_snapshot_taker_template, v8::ObjectTemplate)                   \
+  V(x509_constructor_template, v8::FunctionTemplate)                           \
   QUIC_ENVIRONMENT_STRONG_PERSISTENT_TEMPLATES(V)
 
 #if defined(NODE_EXPERIMENTAL_QUIC) && NODE_EXPERIMENTAL_QUIC
@@ -755,9 +757,9 @@ class AsyncHooks : public MemoryRetainer {
   };
 
   struct SerializeInfo {
-    AliasedBufferInfo async_ids_stack;
-    AliasedBufferInfo fields;
-    AliasedBufferInfo async_id_fields;
+    AliasedBufferIndex async_ids_stack;
+    AliasedBufferIndex fields;
+    AliasedBufferIndex async_id_fields;
     SnapshotIndex js_execution_async_resources;
     std::vector<SnapshotIndex> native_execution_async_resources;
   };
@@ -807,7 +809,7 @@ class ImmediateInfo : public MemoryRetainer {
   void MemoryInfo(MemoryTracker* tracker) const override;
 
   struct SerializeInfo {
-    AliasedBufferInfo fields;
+    AliasedBufferIndex fields;
   };
   SerializeInfo Serialize(v8::Local<v8::Context> context,
                           v8::SnapshotCreator* creator);
@@ -839,7 +841,7 @@ class TickInfo : public MemoryRetainer {
   ~TickInfo() = default;
 
   struct SerializeInfo {
-    AliasedBufferInfo fields;
+    AliasedBufferIndex fields;
   };
   SerializeInfo Serialize(v8::Local<v8::Context> context,
                           v8::SnapshotCreator* creator);
@@ -891,7 +893,9 @@ class ShouldNotAbortOnUncaughtScope {
 
 class CleanupHookCallback {
  public:
-  CleanupHookCallback(void (*fn)(void*),
+  typedef void (*Callback)(void*);
+
+  CleanupHookCallback(Callback fn,
                       void* arg,
                       uint64_t insertion_order_counter)
       : fn_(fn), arg_(arg), insertion_order_counter_(insertion_order_counter) {}
@@ -911,7 +915,7 @@ class CleanupHookCallback {
 
  private:
   friend class Environment;
-  void (*fn_)(void*);
+  Callback fn_;
   void* arg_;
 
   // We keep track of the insertion order for these objects, so that we can
@@ -931,8 +935,8 @@ struct EnvSerializeInfo {
   TickInfo::SerializeInfo tick_info;
   ImmediateInfo::SerializeInfo immediate_info;
   performance::PerformanceState::SerializeInfo performance_state;
-  AliasedBufferInfo stream_base_state;
-  AliasedBufferInfo should_abort_on_uncaught_toggle;
+  AliasedBufferIndex stream_base_state;
+  AliasedBufferIndex should_abort_on_uncaught_toggle;
 
   std::vector<PropInfo> persistent_templates;
   std::vector<PropInfo> persistent_values;
@@ -1231,6 +1235,14 @@ class Environment : public MemoryRetainer {
                                          const char* name,
                                          v8::FunctionCallback callback);
 
+  inline void SetConstructorFunction(v8::Local<v8::Object> that,
+                          const char* name,
+                          v8::Local<v8::FunctionTemplate> tmpl);
+
+  inline void SetConstructorFunction(v8::Local<v8::Object> that,
+                          v8::Local<v8::String> name,
+                          v8::Local<v8::FunctionTemplate> tmpl);
+
   void AtExit(void (*cb)(void* arg), void* arg);
   void RunAtExitCallbacks();
 
@@ -1316,8 +1328,9 @@ class Environment : public MemoryRetainer {
   void ScheduleTimer(int64_t duration);
   void ToggleTimerRef(bool ref);
 
-  inline void AddCleanupHook(void (*fn)(void*), void* arg);
-  inline void RemoveCleanupHook(void (*fn)(void*), void* arg);
+  using CleanupCallback = CleanupHookCallback::Callback;
+  inline void AddCleanupHook(CleanupCallback cb, void* arg);
+  inline void RemoveCleanupHook(CleanupCallback cb, void* arg);
   void RunCleanup();
 
   static size_t NearHeapLimitCallback(void* data,

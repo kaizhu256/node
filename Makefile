@@ -65,8 +65,8 @@ V ?= 0
 available-node = \
 	if [ -x $(PWD)/$(NODE) ] && [ -e $(PWD)/$(NODE) ]; then \
 		$(PWD)/$(NODE) $(1); \
-	elif [ -x `which node` ] && [ -e `which node` ] && [ `which node` ]; then \
-		`which node` $(1); \
+	elif [ -x `command -v node` ] && [ -e `command -v node` ] && [ `command -v node` ]; then \
+		`command -v node` $(1); \
 	else \
 		echo "No available node, cannot run \"node $(1)\""; \
 		exit 1; \
@@ -593,7 +593,7 @@ test-known-issues: all
 
 # Related CI job: node-test-npm
 test-npm: $(NODE_EXE) ## Run the npm test suite on deps/npm.
-	$(NODE) tools/test-npm-package --install --logfile=test-npm.tap deps/npm test-node
+	$(NODE) tools/test-npm-package --install --logfile=test-npm.tap deps/npm test
 
 test-npm-publish: $(NODE_EXE)
 	npm_package_config_publishtest=true $(NODE) deps/npm/test/run.js
@@ -898,7 +898,7 @@ BINARYNAME=$(TARNAME)-$(PLATFORM)-$(ARCH)
 endif
 BINARYTAR=$(BINARYNAME).tar
 # OSX doesn't have xz installed by default, http://macpkg.sourceforge.net/
-HAS_XZ ?= $(shell which xz > /dev/null 2>&1; [ $$? -eq 0 ] && echo 1 || echo 0)
+HAS_XZ ?= $(shell command -v xz > /dev/null 2>&1; [ $$? -eq 0 ] && echo 1 || echo 0)
 # Supply SKIP_XZ=1 to explicitly skip .tar.xz creation
 SKIP_XZ ?= 0
 XZ = $(shell [ $(HAS_XZ) -eq 1 -a $(SKIP_XZ) -eq 0 ] && echo 1 || echo 0)
@@ -979,7 +979,7 @@ $(PKG): release-only
 		--release-urlbase=$(RELEASE_URLBASE) \
 		$(CONFIG_FLAGS) $(BUILD_RELEASE_FLAGS)
 	$(MAKE) install V=$(V) DESTDIR=$(MACOSOUTDIR)/dist/node
-	SIGN="$(CODESIGN_CERT)" PKGDIR="$(MACOSOUTDIR)/dist/node/usr/local" bash \
+	SIGN="$(CODESIGN_CERT)" PKGDIR="$(MACOSOUTDIR)/dist/node/usr/local" sh \
 		tools/osx-codesign.sh
 	mkdir -p $(MACOSOUTDIR)/dist/npm/usr/local/lib/node_modules
 	mkdir -p $(MACOSOUTDIR)/pkgs
@@ -1001,8 +1001,8 @@ $(PKG): release-only
 	productbuild --distribution $(MACOSOUTDIR)/installer/productbuild/distribution.xml \
 		--resources $(MACOSOUTDIR)/installer/productbuild/Resources \
 		--package-path $(MACOSOUTDIR)/pkgs ./$(PKG)
-	SIGN="$(PRODUCTSIGN_CERT)" PKG="$(PKG)" bash tools/osx-productsign.sh
-	bash tools/osx-notarize.sh $(FULLVERSION)
+	SIGN="$(PRODUCTSIGN_CERT)" PKG="$(PKG)" sh tools/osx-productsign.sh
+	sh tools/osx-notarize.sh $(FULLVERSION)
 
 .PHONY: pkg
 # Builds the macOS installer for releases.
@@ -1120,7 +1120,7 @@ $(BINARYTAR): release-only
 	cp LICENSE $(BINARYNAME)
 	cp CHANGELOG.md $(BINARYNAME)
 ifeq ($(OSTYPE),darwin)
-	SIGN="$(CODESIGN_CERT)" PKGDIR="$(BINARYNAME)" bash tools/osx-codesign.sh
+	SIGN="$(CODESIGN_CERT)" PKGDIR="$(BINARYNAME)" sh tools/osx-codesign.sh
 endif
 	tar -cf $(BINARYNAME).tar $(BINARYNAME)
 	$(RM) -r $(BINARYNAME)
@@ -1346,7 +1346,7 @@ lint-py:
 	PYTHONPATH=tools/pip $(PYTHON) -m flake8 --count --show-source --statistics .
 else
 lint-py:
-	$(warning Python linting with flake8 is not avalible)
+	$(warning Python linting with flake8 is not available)
 	$(warning Run 'make lint-py-build')
 endif
 
@@ -1383,7 +1383,7 @@ lint-clean:
 	$(RM) tools/.*lintstamp
 	$(RM) .eslintcache
 
-HAS_DOCKER ?= $(shell which docker > /dev/null 2>&1; [ $$? -eq 0 ] && echo 1 || echo 0)
+HAS_DOCKER ?= $(shell command -v docker > /dev/null 2>&1; [ $$? -eq 0 ] && echo 1 || echo 0)
 
 ifeq ($(HAS_DOCKER), 1)
 DOCKER_COMMAND ?= docker run -it -v $(PWD):/node

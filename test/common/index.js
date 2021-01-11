@@ -61,7 +61,7 @@ if (process.argv.length === 2 &&
     isMainThread &&
     hasCrypto &&
     require.main &&
-    require('cluster').isMaster) {
+    require('cluster').isPrimary) {
   // The copyright notice is relatively big and the flags could come afterwards.
   const bytesToRead = 1500;
   const buffer = Buffer.allocUnsafe(bytesToRead);
@@ -276,8 +276,8 @@ if (global.gc) {
   knownGlobals.push(global.gc);
 }
 
-function allowGlobals(...whitelist) {
-  knownGlobals = knownGlobals.concat(whitelist);
+function allowGlobals(...allowlist) {
+  knownGlobals = knownGlobals.concat(allowlist);
 }
 
 if (process.env.NODE_TEST_KNOWN_GLOBALS !== '0') {
@@ -424,7 +424,7 @@ function getCallSite(top) {
   const err = new Error();
   Error.captureStackTrace(err, top);
   // With the V8 Error API, the stack is not formatted until it is accessed
-  err.stack;
+  err.stack; // eslint-disable-line no-unused-expressions
   Error.prepareStackTrace = originalStackFormatter;
   return err.stack;
 }

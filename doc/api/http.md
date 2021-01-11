@@ -113,12 +113,17 @@ http.get({
 <!-- YAML
 added: v0.3.4
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/36685
+    description: Change the default scheduling from 'fifo' to 'lifo'.
   - version:
     - v14.5.0
     - v12.19.0
     pr-url: https://github.com/nodejs/node/pull/33617
     description: Add `maxTotalSockets` option to agent constructor.
-  - version: v14.5.0
+  - version:
+      - v14.5.0
+      - v12.20.0
     pr-url: https://github.com/nodejs/node/pull/33278
     description: Add `scheduling` option to specify the free socket
                  scheduling strategy.
@@ -159,7 +164,7 @@ changes:
     In case of a high rate of request per second,
     the `'fifo'` scheduling will maximize the number of open sockets,
     while the `'lifo'` scheduling will keep it as low as possible.
-    **Default:** `'fifo'`.
+    **Default:** `'lifo'`.
   * `timeout` {number} Socket timeout in milliseconds.
     This will set the timeout when the socket is created.
 
@@ -253,13 +258,17 @@ Destroy any sockets that are currently in use by the agent.
 
 It is usually not necessary to do this. However, if using an
 agent with `keepAlive` enabled, then it is best to explicitly shut down
-the agent when it will no longer be used. Otherwise,
-sockets may hang open for quite a long time before the server
+the agent when it is no longer needed. Otherwise,
+sockets might stay open for quite a long time before the server
 terminates them.
 
 ### `agent.freeSockets`
 <!-- YAML
 added: v0.11.4
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/36409
+    description: The property now has a `null` prototype.
 -->
 
 * {Object}
@@ -326,6 +335,10 @@ can have open. Unlike `maxSockets`, this parameter applies across all origins.
 ### `agent.requests`
 <!-- YAML
 added: v0.5.9
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/36409
+    description: The property now has a `null` prototype.
 -->
 
 * {Object}
@@ -336,6 +349,10 @@ sockets. Do not modify.
 ### `agent.sockets`
 <!-- YAML
 added: v0.3.6
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/36409
+    description: The property now has a `null` prototype.
 -->
 
 * {Object}
@@ -1595,13 +1612,17 @@ added: v0.4.0
 
 * `name` {string}
 * `value` {any}
+* Returns: {http.ServerResponse}
+
+Returns the response object.
 
 Sets a single header value for implicit headers. If this header already exists
 in the to-be-sent headers, its value will be replaced. Use an array of strings
 here to send multiple headers with the same name. Non-string values will be
 stored without modification. Therefore, [`response.getHeader()`][] may return
 non-string values. However, the non-string values will be converted to strings
-for network transmission.
+for network transmission. The same response object is returned to the caller,
+to enable call chaining.
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1888,6 +1909,10 @@ the request body should be sent.
 <!-- YAML
 added: v0.1.17
 changes:
+  - version: v15.5.0
+    pr-url: https://github.com/nodejs/node/pull/33035
+    description: The `destroyed` value returns `true` after the incoming data
+                 is consumed.
   - version:
      - v13.1.0
      - v12.16.0
@@ -1901,6 +1926,11 @@ An `IncomingMessage` object is created by [`http.Server`][] or
 [`http.ClientRequest`][] and passed as the first argument to the [`'request'`][]
 and [`'response'`][] event respectively. It may be used to access response
 status, headers and data.
+
+Different from it's `socket` value which is a subclass of {stream.Duplex}, the
+`IncomingMessage` itself extends {stream.Readable} and is created separately to
+parse and emit the incoming HTTP headers and payload, as the underlying socket
+may be reused multiple times in case of keep-alive.
 
 ### Event: `'aborted'`
 <!-- YAML
@@ -1954,6 +1984,16 @@ const req = http.request({
 });
 ```
 
+### `message.connection`
+<!-- YAML
+added: v0.1.90
+deprecated: REPLACEME
+ -->
+
+> Stability: 0 - Deprecated. Use [`message.socket`][].
+
+Alias for [`message.socket`][].
+
 ### `message.destroy([error])`
 <!-- YAML
 added: v0.3.0
@@ -1976,6 +2016,12 @@ as an argument to any listeners on the event.
 ### `message.headers`
 <!-- YAML
 added: v0.1.5
+changes:
+  - version: v15.1.0
+    pr-url: https://github.com/nodejs/node/pull/35281
+    description: >-
+      `message.headers` is now lazily computed using an accessor property
+      on the prototype.
 -->
 
 * {Object}
@@ -2336,6 +2382,9 @@ This can be overridden for servers and client requests by passing the
 <!-- YAML
 added: v0.3.6
 changes:
+  - version: v15.3.0
+    pr-url: https://github.com/nodejs/node/pull/36048
+    description: It is possible to abort a request with an AbortSignal.
   - version:
      - v13.8.0
      - v12.15.0
@@ -2403,6 +2452,8 @@ changes:
      or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: A number specifying the socket timeout in milliseconds.
     This will set the timeout before the socket is connected.
+  * `signal` {AbortSignal}: An AbortSignal that may be used to abort an ongoing
+    request.
 * `callback` {Function}
 * Returns: {http.ClientRequest}
 
@@ -2596,6 +2647,10 @@ events will be emitted in the following order:
 Setting the `timeout` option or using the `setTimeout()` function will
 not abort the request or do anything besides add a `'timeout'` event.
 
+Passing an `AbortSignal` and then calling `abort` on the corresponding
+`AbortController` will behave the same way as calling `.destroy()` on the
+request itself.
+
 ## `http.validateHeaderName(name)`
 <!-- YAML
 added: v14.3.0
@@ -2697,6 +2752,7 @@ try {
 [`net.Socket`]: net.md#net_class_net_socket
 [`net.createConnection()`]: net.md#net_net_createconnection_options_connectlistener
 [`new URL()`]: url.md#url_new_url_input_base
+[`message.socket`]: #http_message_socket
 [`removeHeader(name)`]: #http_request_removeheader_name
 [`request.end()`]: #http_request_end_data_encoding_callback
 [`request.destroy()`]: #http_request_destroy_error

@@ -30,6 +30,7 @@ file a new issue.
     * [Building the documentation](#building-the-documentation)
     * [Building a debug build](#building-a-debug-build)
     * [Building an ASAN build](#building-an-asan-build)
+    * [Speeding up frequent rebuilds when developing](#speeding-up-frequent-rebuilds-when-developing)
     * [Troubleshooting Unix and macOS builds](#troubleshooting-unix-and-macos-builds)
   * [Windows](#windows)
     * [Prerequisites](#prerequisites)
@@ -113,6 +114,7 @@ platforms. This is true regardless of entries in the table below.
 | Windows          | x64, x86         | Windows Server 2012 (not R2)    | Experimental |                                   |
 | Windows          | arm64            | >= Windows 10                   | Tier 2 (compiling) / Experimental (running) |    |
 | macOS            | x64              | >= 10.13                        | Tier 1       |                                   |
+| macOS            | arm64            | >= 11                           | Experimental |                                   |
 | SmartOS          | x64              | >= 18                           | Tier 2       |                                   |
 | AIX              | ppc64be >=power7 | >= 7.2 TL02                     | Tier 2       |                                   |
 | FreeBSD          | x64              | >= 11                           | Experimental | Downgraded as of Node.js 12  <sup>[7](#fn7)</sup>     |
@@ -525,6 +527,29 @@ show clear stacktrace if ASAN hits an issue.
 $  ./configure --debug --enable-asan && make -j4
 $ make test-only
 ```
+
+#### Speeding up frequent rebuilds when developing
+
+If you plan to frequently rebuild Node.js, especially if using several branches,
+installing `ccache` can help to greatly reduce build times. Set up with:
+```console
+$ sudo apt install ccache   # for Debian/Ubuntu, included in most Linux distros
+$ ccache -o cache_dir=<tmp_dir>
+$ ccache -o max_size=5.0G
+$ export CC="ccache gcc"    # add to your .profile
+$ export CXX="ccache g++"   # add to your .profile
+```
+This will allow for near-instantaneous rebuilds even when switching branches.
+
+When modifying only the JS layer in `lib`, it is possible to externally load it
+without modifying the executable:
+```console
+$ ./configure --node-builtin-modules-path $(pwd)
+```
+The resulting binary won't include any JS files and will try to load them from
+the specified directory. The JS debugger of Visual Studio Code supports this
+configuration since the November 2020 version and allows for setting
+breakpoints.
 
 #### Troubleshooting Unix and macOS builds
 

@@ -600,7 +600,9 @@ Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the
 
 ### `watcher.ref()`
 <!-- YAML
-added: v14.3.0
+added:
+  - v14.3.0
+  - v12.20.0
 -->
 
 * Returns: {fs.FSWatcher}
@@ -615,7 +617,9 @@ called previously.
 
 ### `watcher.unref()`
 <!-- YAML
-added: v14.3.0
+added:
+  - v14.3.0
+  - v12.20.0
 -->
 
 * Returns: {fs.FSWatcher}
@@ -628,7 +632,9 @@ no effect.
 
 ## Class: `fs.StatWatcher`
 <!-- YAML
-added: v14.3.0
+added:
+  - v14.3.0
+  - v12.20.0
 -->
 
 * Extends {EventEmitter}
@@ -638,7 +644,9 @@ object.
 
 ### `watcher.ref()`
 <!-- YAML
-added: v14.3.0
+added:
+  - v14.3.0
+  - v12.20.0
 -->
 
 * Returns: {fs.StatWatcher}
@@ -653,7 +661,9 @@ called previously.
 
 ### `watcher.unref()`
 <!-- YAML
-added: v14.3.0
+added:
+  - v14.3.0
+  - v12.20.0
 -->
 
 * Returns: {fs.StatWatcher}
@@ -1346,7 +1356,7 @@ added: v0.6.7
 changes:
   - version: REPLACEME
     pr-url: https://github.com/nodejs/node/pull/35775
-    description: add option `mkdirp`.
+    description: add option `parents`.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/12562
     description: The `callback` parameter is no longer optional. Not passing
@@ -1369,7 +1379,7 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-  * `mkdirp` {boolean} "mkdir -p" directories in `path` if they do not exist.
+  * `parents` {boolean} create parent-directories if they do not exist.
     **Default:** `false`.
 * `callback` {Function}
   * `err` {Error}
@@ -1412,7 +1422,7 @@ added: v0.6.7
 changes:
   - version: REPLACEME
     pr-url: https://github.com/nodejs/node/pull/35775
-    description: add option `mkdirp`.
+    description: add option `parents`.
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7831
     description: The passed `options` object will never be modified.
@@ -1427,7 +1437,7 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-  * `mkdirp` {boolean} "mkdir -p" directories in `path` if they do not exist.
+  * `parents` {boolean} create parent-directories if they do not exist.
     **Default:** `false`.
 
 Synchronously append data to a file, creating the file if it does not yet
@@ -1762,6 +1772,13 @@ fs.copyFileSync('source.txt', 'destination.txt', COPYFILE_EXCL);
 added: v0.1.31
 changes:
   - version:
+     - v15.4.0
+    pr-url: https://github.com/nodejs/node/pull/35922
+    description: The `fd` option accepts FileHandle arguments.
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/31408
+    description: Change `emitClose` default to `true`.
+  - version:
      - v13.6.0
      - v12.17.0
     pr-url: https://github.com/nodejs/node/pull/29083
@@ -1792,10 +1809,10 @@ changes:
   * `flags` {string} See [support of file system `flags`][]. **Default:**
     `'r'`.
   * `encoding` {string} **Default:** `null`
-  * `fd` {integer} **Default:** `null`
+  * `fd` {integer|FileHandle} **Default:** `null`
   * `mode` {integer} **Default:** `0o666`
   * `autoClose` {boolean} **Default:** `true`
-  * `emitClose` {boolean} **Default:** `false`
+  * `emitClose` {boolean} **Default:** `true`
   * `start` {integer}
   * `end` {integer} **Default:** `Infinity`
   * `highWaterMark` {integer} **Default:** `64 * 1024`
@@ -1823,9 +1840,9 @@ If `fd` points to a character device that only supports blocking reads
 available. This can prevent the process from exiting and the stream from
 closing naturally.
 
-By default, the stream will not emit a `'close'` event after it has been
-destroyed. This is the opposite of the default for other `Readable` streams.
-Set the `emitClose` option to `true` to change this behavior.
+By default, the stream will emit a `'close'` event after it has been
+destroyed, like most `Readable` streams.  Set the `emitClose` option to
+`false` to change this behavior.
 
 By providing the `fs` option, it is possible to override the corresponding `fs`
 implementations for `open`, `read`, and `close`. When providing the `fs` option,
@@ -1869,6 +1886,13 @@ If `options` is a string, then it specifies the encoding.
 added: v0.1.31
 changes:
   - version:
+     - v15.4.0
+    pr-url: https://github.com/nodejs/node/pull/35922
+    description: The `fd` option accepts FileHandle arguments.
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/31408
+    description: Change `emitClose` default to `true`.
+  - version:
      - v13.6.0
      - v12.17.0
     pr-url: https://github.com/nodejs/node/pull/29083
@@ -1897,10 +1921,10 @@ changes:
   * `flags` {string} See [support of file system `flags`][]. **Default:**
     `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
-  * `fd` {integer} **Default:** `null`
+  * `fd` {integer|FileHandle} **Default:** `null`
   * `mode` {integer} **Default:** `0o666`
   * `autoClose` {boolean} **Default:** `true`
-  * `emitClose` {boolean} **Default:** `false`
+  * `emitClose` {boolean} **Default:** `true`
   * `start` {integer}
   * `fs` {Object|null} **Default:** `null`
 * Returns: {fs.WriteStream} See [Writable Stream][].
@@ -1917,9 +1941,9 @@ then the file descriptor won't be closed, even if there's an error.
 It is the application's responsibility to close it and make sure there's no
 file descriptor leak.
 
-By default, the stream will not emit a `'close'` event after it has been
-destroyed. This is the opposite of the default for other `Writable` streams.
-Set the `emitClose` option to `true` to change this behavior.
+By default, the stream will emit a `'close'` event after it has been
+destroyed, like most `Writable` streams.  Set the `emitClose` option to
+`false` to change this behavior.
 
 By providing the `fs` option it is possible to override the corresponding `fs`
 implementations for `open`, `write`, `writev` and `close`. Overriding `write()`
@@ -2578,6 +2602,9 @@ changes:
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned
     [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+  * `throwIfNoEntry` {boolean} Whether an exception will be thrown
+    if no file system entry exists, rather than returning `undefined`.
+    **Default:** `true`.
 * Returns: {fs.Stats}
 
 Synchronous lstat(2).
@@ -2811,6 +2838,28 @@ a colon, Node.js will open a file system stream, as described by
 Functions based on `fs.open()` exhibit this behavior as well:
 `fs.writeFile()`, `fs.readFile()`, etc.
 
+## `fs.open(path[, options], callback)`
+<!-- YAML
+added: REPLACEME
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/35775
+    description: add option `parents`.
+-->
+
+* `path` {string|Buffer|URL}
+* `options` {Object|string}
+  * `flags` {string|number} See [support of file system `flags`][].
+    **Default:** `'r'`.
+  * `mode` {string|integer} **Default:** `0o666` (readable and writable)
+  * `parents` {boolean} create parent-directories if they do not exist.
+    **Default:** `false`.
+  * `callback` {Function}
+    * `err` {Error}
+    * `fd` {integer}
+
+Asynchronous file open using `options` signature-form.
+
 ## `fs.opendir(path[, options], callback)`
 <!-- YAML
 added: v12.12.0
@@ -2894,34 +2943,27 @@ Returns an integer representing the file descriptor.
 For detailed information, see the documentation of the asynchronous version of
 this API: [`fs.open()`][].
 
-## `fs.openWithMkdirp(path[, flags[, mode]], callback)`
+## `fs.openSync(path[, options])`
 <!-- YAML
 added: REPLACEME
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/35775
+    description: add option `parents`.
 -->
 
 * `path` {string|Buffer|URL}
-* `flags` {string|number} See [support of file system `flags`][].
-  **Default:** `'r'`.
-* `mode` {string|integer} **Default:** `0o666` (readable and writable)
-* `callback` {Function}
-  * `err` {Error}
-  * `fd` {integer}
+* `options` {Object|string}
+  * `flags` {string|number} See [support of file system `flags`][].
+    **Default:** `'r'`.
+  * `mode` {string|integer} **Default:** `0o666` (readable and writable)
+  * `parents` {boolean} create parent-directories if they do not exist.
+    **Default:** `false`.
+  * `callback` {Function}
+    * `err` {Error}
+    * `fd` {integer}
 
-Behaves like [`fs.open()`][], except will "mkdir -p" directories in `file`
-if they do not exist
-
-## `fs.openWithMkdirpSync(path[, flags, mode])`
-<!-- YAML
-added: REPLACEME
--->
-
-* `path` {string|Buffer|URL}
-* `flags` {string|number} See [support of file system `flags`][].
-  **Default:** `'r'`.
-* `mode` {string|integer} **Default:** `0o666` (readable and writable)
-
-Behaves like `fs.openSync()`, except will "mkdir -p" directories in `file`
-if they do not exist
+Synchronous file open using `options` signature-form.
 
 ## `fs.read(fd, buffer, offset, length, position, callback)`
 <!-- YAML
@@ -3849,6 +3891,9 @@ changes:
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned
     [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+  * `throwIfNoEntry` {boolean} Whether an exception will be thrown
+    if no file system entry exists, rather than returning `undefined`.
+    **Default:** `true`.
 * Returns: {fs.Stats}
 
 Synchronous stat(2).
@@ -4426,7 +4471,7 @@ added: v0.1.29
 changes:
   - version: REPLACEME
     pr-url: https://github.com/nodejs/node/pull/35775
-    description: add option `mkdirp`.
+    description: add option `parents`.
   - version: v15.2.0
     pr-url: https://github.com/nodejs/node/pull/35993
     description: The options argument may include an AbortSignal to abort an
@@ -4465,7 +4510,7 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-  * `mkdirp` {boolean} "mkdir -p" directories in `file` if they do not exist.
+  * `parents` {boolean} create parent-directories if they do not exist.
     **Default:** `false`.
   * `signal` {AbortSignal} allows aborting an in-progress writeFile
 * `callback` {Function}
@@ -4553,7 +4598,7 @@ added: v0.1.29
 changes:
   - version: REPLACEME
     pr-url: https://github.com/nodejs/node/pull/35775
-    description: add option `mkdirp`.
+    description: add option `parents`.
   - version: v14.12.0
     pr-url: https://github.com/nodejs/node/pull/34993
     description: The `data` parameter will stringify an object with an
@@ -4580,7 +4625,7 @@ changes:
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-  * `mkdirp` {boolean} "mkdir -p" directories in `file` if they do not exist.
+  * `parents` {boolean} create parent-directories if they do not exist.
     **Default:** `false`.
 
 Returns `undefined`.
@@ -4739,6 +4784,14 @@ so on), a numeric file descriptor is not used by the promise-based API. Instead,
 the promise-based API uses the `FileHandle` class in order to help avoid
 accidental leaking of unclosed file descriptors after a `Promise` is resolved or
 rejected.
+
+#### Event: `'close'`
+<!-- YAML
+added: v15.4.0
+-->
+
+The `'close'` event is emitted when the `FileHandle` and any of its underlying
+resources (a file descriptor, for example) have been closed.
 
 #### `filehandle.appendFile(data, options)`
 <!-- YAML
@@ -5656,8 +5709,6 @@ changes:
     description: The `recursive`, `maxBusyTries`, and `emfileWait` options are
                   now supported.
 -->
-
-> Stability: 1 - Recursive removal is experimental.
 
 * `path` {string|Buffer|URL}
 * `options` {Object}

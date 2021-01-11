@@ -159,11 +159,10 @@ void PerformanceEntry::Notify(Environment* env,
   AliasedUint32Array& observers = env->performance_state()->observers;
   if (!env->performance_entry_callback().IsEmpty() &&
       type != NODE_PERFORMANCE_ENTRY_TYPE_INVALID && observers[type]) {
-    node::MakeCallback(env->isolate(),
-                       object.As<Object>(),
-                       env->performance_entry_callback(),
-                       1, &object,
-                       node::async_context{0, 0});
+    node::MakeSyncCallback(env->isolate(),
+                           object.As<Object>(),
+                           env->performance_entry_callback(),
+                           1, &object);
   }
 }
 
@@ -706,8 +705,7 @@ void Initialize(Local<Object> target,
   env->SetProtoMethod(eldh, "enable", ELDHistogramEnable);
   env->SetProtoMethod(eldh, "disable", ELDHistogramDisable);
   env->SetProtoMethod(eldh, "reset", ELDHistogramReset);
-  target->Set(context, eldh_classname,
-              eldh->GetFunction(env->context()).ToLocalChecked()).Check();
+  env->SetConstructorFunction(target, eldh_classname, eldh);
 }
 
 }  // namespace performance

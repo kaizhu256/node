@@ -2011,6 +2011,11 @@ assert.strictEqual(util.inspect('"\'${a}'), "'\"\\'${a}'");
     rest[rest.length - 1] = rest[rest.length - 1].slice(0, -1);
     rest.length = 1;
   }
+  Object.setPrototypeOf(clazz, Map.prototype);
+  assert.strictEqual(
+    util.inspect(clazz),
+    ['[class', name, '[Map]', ...rest].join(' ') + ']'
+  );
   Object.setPrototypeOf(clazz, null);
   assert.strictEqual(
     util.inspect(clazz),
@@ -2866,6 +2871,17 @@ assert.strictEqual(
   );
 }
 
+// Check that prototypes with a null prototype are inspectable.
+// Regression test for https://github.com/nodejs/node/issues/35730
+{
+  function Func() {}
+  Func.prototype = null;
+  const object = {};
+  object.constructor = Func;
+
+  assert.strictEqual(util.inspect(object), '{ constructor: [Function: Func] }');
+}
+
 // Test changing util.inspect.colors colors and aliases.
 {
   const colors = util.inspect.colors;
@@ -2990,4 +3006,75 @@ assert.strictEqual(
 
   // Consistency check.
   assert(fullObjectGraph(global).has(Function.prototype));
+}
+
+{
+  // Confirm that own constructor value displays correctly.
+
+  function Fhqwhgads() {}
+
+  const sterrance = new Fhqwhgads();
+  sterrance.constructor = Fhqwhgads;
+
+  assert.strictEqual(
+    util.inspect(sterrance, { showHidden: true }),
+    'Fhqwhgads {\n' +
+      '  constructor: <ref *1> [Function: Fhqwhgads] {\n' +
+      '    [length]: 0,\n' +
+      "    [name]: 'Fhqwhgads',\n" +
+      '    [prototype]: { [constructor]: [Circular *1] }\n' +
+      '  }\n' +
+      '}'
+  );
+}
+
+{
+  // Confirm null prototype of generator prototype displays as expected.
+
+  function getProtoOfProto() {
+    return Object.getPrototypeOf(Object.getPrototypeOf(function* () {}));
+  }
+
+  function* generator() {}
+
+  const generatorPrototype = Object.getPrototypeOf(generator);
+  const originalProtoOfProto = Object.getPrototypeOf(generatorPrototype);
+  assert.strictEqual(getProtoOfProto(), originalProtoOfProto);
+  Object.setPrototypeOf(generatorPrototype, null);
+  assert.notStrictEqual(getProtoOfProto, originalProtoOfProto);
+
+  // This is the actual test. The other assertions in this block are about
+  // making sure the test is set up correctly and isn't polluting other tests.
+  assert.strictEqual(
+    util.inspect(generator, { showHidden: true }),
+    '[GeneratorFunction: generator] {\n' +
+    '  [length]: 0,\n' +
+    "  [name]: 'generator',\n" +
+    "  [prototype]: Object [Generator] { [Symbol(Symbol.toStringTag)]: 'Generator' },\n" + // eslint-disable-line max-len
+    "  [Symbol(Symbol.toStringTag)]: 'GeneratorFunction'\n" +
+    '}'
+  );
+
+  // Reset so we don't pollute other tests
+  Object.setPrototypeOf(generatorPrototype, originalProtoOfProto);
+  assert.strictEqual(getProtoOfProto(), originalProtoOfProto);
+}
+
+{
+  // Test for when breakLength results in a single column.
+  const obj = Array(9).fill('fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf');
+  assert.strictEqual(
+    util.inspect(obj, { breakLength: 256 }),
+    '[\n' +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf',\n" +
+    "  'fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf'\n" +
+    ']'
+  );
 }

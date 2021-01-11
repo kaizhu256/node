@@ -21,14 +21,10 @@ common.expectWarning({
      'Use events.setMaxListeners() to increase ' +
      'limit'],
     ['Possible EventTarget memory leak detected. 3 foo listeners added to ' +
-     '[AbortSignal [EventTarget]]. ' +
+     '[AbortSignal]. ' +
      'Use events.setMaxListeners() to increase ' +
      'limit'],
   ],
-  ExperimentalWarning: [[
-    'AbortController is an experimental feature. This feature could change ' +
-    'at any time'
-  ]]
 });
 
 

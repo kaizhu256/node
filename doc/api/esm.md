@@ -6,7 +6,12 @@
 added: v8.5.0
 changes:
   - version:
+    - v15.3.0
+    pr-url: https://github.com/nodejs/node/pull/35781
+    description: Stabilize modules implementation.
+  - version:
     - v14.13.0
+    - v12.20.0
     pr-url: https://github.com/nodejs/node/pull/35249
     description: Support for detection of CommonJS named exports.
   - version: v14.8.0
@@ -15,6 +20,7 @@ changes:
   - version:
     - v14.0.0
     - v13.14.0
+    - v12.20.0
     pr-url: https://github.com/nodejs/node/pull/31974
     description: Remove experimental modules warning.
   - version:
@@ -29,7 +35,7 @@ changes:
       `"type"` field.
 -->
 
-> Stability: 1 - Experimental
+> Stability: 2 - Stable
 
 ## Introduction
 
@@ -61,14 +67,8 @@ console.log(addTwo(4));
 ```
 
 Node.js fully supports ECMAScript modules as they are currently specified and
-provides limited interoperability between them and the existing module format,
+provides interoperability between them and its original module format,
 [CommonJS][].
-
-Node.js contains support for ES Modules based upon the
-[Node.js EP for ES Modules][] and the [ECMAScript-modules implementation][].
-
-Expect major changes in the implementation including interoperability support,
-specifier resolution, and default behavior.
 
 <!-- Anchors to make sure old links find a target -->
 <i id="esm_package_json_type_field"></i>
@@ -201,7 +201,9 @@ import _ from 'data:application/json,"world!"';
 #### `node:` Imports
 
 <!-- YAML
-added: v14.13.1
+added:
+  - v14.13.1
+  - v12.20.0
 -->
 
 `node:` URLs are supported as an alternative means to load Node.js builtin
@@ -318,7 +320,7 @@ compatibility.
 The CommonJS module `require` always treats the files it references as CommonJS.
 
 Using `require` to load an ES module is not supported because ES modules have
-asynchronous execution. Instead, use use [`import()`][] to load an ES module
+asynchronous execution. Instead, use [`import()`][] to load an ES module
 from a CommonJS module.
 
 ### CommonJS Namespaces
@@ -1300,9 +1302,7 @@ success!
 [Core modules]: modules.md#modules_core_modules
 [Dynamic `import()`]: https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports
 [ECMAScript Top-Level `await` proposal]: https://github.com/tc39/proposal-top-level-await/
-[ECMAScript-modules implementation]: https://github.com/nodejs/modules/blob/master/doc/plan-for-new-modules-implementation.md
 [ES Module Integration Proposal for Web Assembly]: https://github.com/webassembly/esm-integration
-[Node.js EP for ES Modules]: https://github.com/nodejs/node-eps/blob/master/002-es-modules.md
 [Node.js Module Resolution Algorithm]: #esm_resolver_algorithm_specification
 [Terminology]: #esm_terminology
 [URL]: https://url.spec.whatwg.org/

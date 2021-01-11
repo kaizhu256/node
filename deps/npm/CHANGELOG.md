@@ -1,3 +1,366 @@
+## 7.3.0 (2020-12-18)
+
+### FEATURES
+
+* [`a9b8bf263`](https://github.com/npm/cli/commit/a9b8bf2634c627fbb16ca3a6bb2c2f1058c3e586)
+  [#2362](https://github.com/npm/cli/issues/2362)
+  Support multiple set/get/deletes in npm config
+  ([@isaacs](https://github.com/isaacs))
+
+### BUG FIXES
+
+* [`9eef63849`](https://github.com/npm/cli/commit/9eef638499c88689acb00d812c10f0407cb95c08)
+  Pass full set of options to login helper functions.
+  This fixes `npm login --no-strict-ssl`, as well as a host of other
+  options that one might want to set while logging in.
+  Reported by: [@toddself](https://github.com/toddself)
+  ([@isaacs](https://github.com/isaacs))
+* [`628a554bc`](https://github.com/npm/cli/commit/628a554bc113e4e115d34778bfe8a77cfad1d933)
+  [#2358](https://github.com/npm/cli/issues/2358)
+  fix doctor test to work correctly for node pre-release versions
+  ([@nlf](https://github.com/nlf))
+* [`be4a0900b`](https://github.com/npm/cli/commit/be4a0900b14b2c6315bf62bed8f5affb648215ae)
+  [#2360](https://github.com/npm/cli/issues/2360)
+  raise an error early if publishing without login, registry
+  ([@isaacs](https://github.com/isaacs))
+* [`44d433105`](https://github.com/npm/cli/commit/44d4331058c53909ada62470b23b2185102b2128)
+  [#2366](https://github.com/npm/cli/issues/2366)
+  Include prerelease versions when deprecating
+  ([@tiegz](https://github.com/tiegz))
+* [`cba3341da`](https://github.com/npm/cli/commit/cba3341dae4c92541049dc976e82e2ba19566e95)
+  [#2373](https://github.com/npm/cli/issues/2373)
+  npm profile refactor
+  ([@ruyadorno](https://github.com/ruyadorno))
+* [`7539504e3`](https://github.com/npm/cli/commit/7539504e3abdec28039a7798e5ccb745b536cb6e)
+  [#2382](https://github.com/npm/cli/issues/2382)
+  remove the metrics sender
+  ([@nlf](https://github.com/nlf))
+
+### DOCS
+
+* [`b98569a8c`](https://github.com/npm/cli/commit/b98569a8ca28dbd611fe84492aee996e2e567b55)
+  add note about `INIT_CWD` to run-script doc
+* [`292929279`](https://github.com/npm/cli/commit/292929279854a06ca60ff737b574cbd6503ec5db)
+  [#2368](https://github.com/npm/cli/issues/2368)
+  Revert bug-reporting links to GH.
+  Re: <https://blog.npmjs.org/post/188841555980/updates-to-community-docs-more>
+  ([@tiegz](https://github.com/tiegz))
+* [`f4560626f`](https://github.com/npm/cli/commit/f4560626f09dba4889d752f7f739aa5a5f3da741)
+  update `ISSUE_TEMPLATE` with modern links
+  ([@isaacs](https://github.com/isaacs))
+* [`bc1c567ed`](https://github.com/npm/cli/commit/bc1c567ed3d853ed4f01d33a800eb453956de6ef)
+  update npm command doc feature request links
+  ([@isaacs](https://github.com/isaacs))
+* [`0ad958fe1`](https://github.com/npm/cli/commit/0ad958fe1cb811699caca235f361c8328baac8c4)
+  [#2381](https://github.com/npm/cli/issues/2381)
+  (docs,test): assorted typo fixes
+  ([@XhmikosR](https://github.com/XhmikosR))
+
+### TESTING
+
+* [`a92d310b7`](https://github.com/npm/cli/commit/a92d310b7e9e4c48b08f52785c2e3a6d52a82ad7)
+  [#2361](https://github.com/npm/cli/issues/2361)
+  Add max-len to lint rules
+  ([@Edu93Jer](https://github.com/Edu93Jer))
+
+### DEPENDENCIES
+
+* [`4fc2f3e05`](https://github.com/npm/cli/commit/4fc2f3e05b600aa64fe5eb6b8b77bc070e5a9403)
+  [#2300](https://github.com/npm/cli/issues/2300)
+  `@npmcli/config@1.2.8`:
+    * Support setting email without username/password
+
+## 7.2.0 (2020-12-15)
+
+### FEATURES
+
+* [`a9c4b158c`](https://github.com/npm/cli/commit/a9c4b158c46dd0d0c8d8744a97750ffd0c30cc09)
+  [#2342](https://github.com/npm/cli/issues/2342)
+  allow npm rebuild to accept a path to a module
+  ([@nlf](https://github.com/nlf))
+
+### DEPENDENCIES
+
+* [`beb371800`](https://github.com/npm/cli/commit/beb371800292140bf3882253c447168a378bc154)
+  [#2334](https://github.com/npm/cli/issues/2334)
+  remove unused top level dep tough-cookie
+  ([@darcyclarke](https://github.com/darcyclarke))
+* [`d45e181d1`](https://github.com/npm/cli/commit/d45e181d17dd88d82b3a97f8d9cd5fa5b6230e48)
+  [#2335](https://github.com/npm/cli/issues/2335)
+  `ini@2.0.0`, `@npmcli/config@1.2.7`
+  ([@isaacs](https://github.com/isaacs))
+* [`ef4b18b5a`](https://github.com/npm/cli/commit/ef4b18b5a70381b264d234817cff32eeb6848a73)
+  [#2309](https://github.com/npm/cli/issues/2309)
+  `@npmcli/arborist@2.0.2`
+    * properly remove deps when no lockfile and package.json is present
+* [`c6c013e6e`](https://github.com/npm/cli/commit/c6c013e6ebc4fe036695db1fd491eb68f3b57c68)
+  `readdir-scoped-modules@1.1.0`
+* [`a1a2134aa`](https://github.com/npm/cli/commit/a1a2134aa9a1092493db6d6c9a729ff5203f0dd4)
+  remove unused sorted-object dep
+  ([@nlf](https://github.com/nlf))
+* [`85c2a2d31`](https://github.com/npm/cli/commit/85c2a2d318ae066fb2c161174f5aea97e18bc9c5)
+  [#2344](https://github.com/npm/cli/issues/2344)
+  remove editor dependency
+  ([@nlf](https://github.com/nlf))
+
+### TESTING
+
+* [`3a6dd511c`](https://github.com/npm/cli/commit/3a6dd511c944c5f2699825a99bba1dde333a45ef)
+  npm edit
+  ([@nlf](https://github.com/nlf))
+* [`3ba5de4e7`](https://github.com/npm/cli/commit/3ba5de4e7f6c5c0f995a29844926d6ed2833addd)
+  [#2347](https://github.com/npm/cli/issues/2347)
+  npm help-search
+  ([@nlf](https://github.com/nlf))
+* [`6caf19f49`](https://github.com/npm/cli/commit/6caf19f491e144be3e2a1a50f492dad48b01f361)
+  [#2348](https://github.com/npm/cli/issues/2348)
+  npm help
+  ([@nlf](https://github.com/nlf))
+* [`cb5847e32`](https://github.com/npm/cli/commit/cb5847e3203c52062485b5de68e4f6d29b33c361)
+  [#2349](https://github.com/npm/cli/issues/2349)
+  npm hook
+  ([@nlf](https://github.com/nlf))
+* [`996a2f6b1`](https://github.com/npm/cli/commit/996a2f6b130d6678998a2f6a5ec97d75534d5f66)
+  [#2353](https://github.com/npm/cli/issues/2353)
+  npm org
+  ([@nlf](https://github.com/nlf))
+* [`8c67c38a4`](https://github.com/npm/cli/commit/8c67c38a4f476ff5be938db6b6b3ee9ac6b44db5)
+  [#2354](https://github.com/npm/cli/issues/2354)
+  npm set
+  ([@nlf](https://github.com/nlf))
+
+## 7.1.2 (2020-12-11)
+
+### DEPENDENCIES
+
+* [`c3ba1daf7`](https://github.com/npm/cli/commit/c3ba1daf7cd335d72aeba80ae0e9f9d215ca9ea5)
+  [#2033](https://github.com/npm/cli/issues/2033) `@npmcli/config@1.2.6`:
+    * Set `INIT_CWD` to initial current working directory
+    * Set `NODE` to initial process.execPath
+* [`8029608b9`](https://github.com/npm/cli/commit/8029608b914fe5ba35a7cd37ae95ab93b0532e2e)
+  `json-parse-even-better-errors@2.3.1`
+* [`0233818e6`](https://github.com/npm/cli/commit/0233818e606888b80881b17a2c6aca9f10a619b2)
+  [#2332](https://github.com/npm/cli/issues/2332) `treeverse@1.0.4`
+* [`e401d6bb3`](https://github.com/npm/cli/commit/e401d6bb37ffc767b4fefe89878dd3c3ef490b2c)
+  `ini@1.3.8`
+* [`011bb1220`](https://github.com/npm/cli/commit/011bb122035dcd43769ec35982662cca41635068)
+  [#2320](https://github.com/npm/cli/issues/2320) `@npmcli/arborist@2.0.1`:
+    * Do not save with `^` and no version
+
+### BUGFIXES
+
+* [`244c2069f`](https://github.com/npm/cli/commit/244c2069fd093f053d3061c85575ac13e72e2454)
+  [#2325](https://github.com/npm/cli/issues/2325) npm search
+  include/exclude ([@ruyadorno](https://github.com/ruyadorno))
+* [`d825e901e`](https://github.com/npm/cli/commit/d825e901eceea4cf8d860e35238dc30008eb4da4)
+  [#1905](https://github.com/npm/cli/issues/1905)
+  [#2316](https://github.com/npm/cli/issues/2316) run install scripts for
+  root project
+* [`315449142`](https://github.com/npm/cli/commit/31544914294948085a84097af7f0f5de2a2e8f7e)
+  [#2331](https://github.com/npm/cli/issues/2331)
+  [#2021](https://github.com/npm/cli/issues/2021) Set `NODE_ENV=production`
+  if 'dev' is on the omit list ([@isaacs](https://github.com/isaacs))
+
+### TESTING
+
+* [`c243e3b9d`](https://github.com/npm/cli/commit/c243e3b9d9bda0580a0fc1b3e230b4d47412176e)
+  [#2313](https://github.com/npm/cli/issues/2313) tests: completion
+  ([@nlf](https://github.com/nlf))
+* [`7ff6efbb8`](https://github.com/npm/cli/commit/7ff6efbb866591b2330b967215cef8146dff3ebf)
+  [#2314](https://github.com/npm/cli/issues/2314) npm team
+  ([@ruyadorno](https://github.com/ruyadorno))
+* [`7a4f0c96c`](https://github.com/npm/cli/commit/7a4f0c96c2ab9f264f7bda2caf7e72c881571270)
+  [#2323](https://github.com/npm/cli/issues/2323) npm doctor
+  ([@nlf](https://github.com/nlf))
+
+### DOCUMENTATION
+
+* [`e340cf64b`](https://github.com/npm/cli/commit/e340cf64ba31ef329a9049b60c32ffd0342cfb7d)
+  [#2330](https://github.com/npm/cli/issues/2330) explain through
+  run-script ([@isaacs](https://github.com/isaacs))
+
+## 7.1.1 (2020-12-08)
+
+### DEPENDENCIES
+
+* [`bf09e719c`](https://github.com/npm/cli/commit/bf09e719c7f563a255b1e9af6b1237ebc5598db6)
+  `@npmcli/arborist@2.0.0`
+    * Much stricter tree integrity guarantees
+    * Fix issues where the root project is a symlink, or linked as a
+      workspace
+* [`7ceb5b728`](https://github.com/npm/cli/commit/7ceb5b728b9f326c567f5ffe5831c9eccf013aa0)
+  `ini@1.3.6`
+* [`77c6ced2a`](https://github.com/npm/cli/commit/77c6ced2a6daaadbff715c8f05b2e61ba76e9bab)
+  `make-fetch-happen@8.0.11`
+    * Avoid caching headers that are hazardous or unnecessary to leave
+      lying around (authorization, npm-session, etc.)
+    * [#38](https://github.com/npm/make-fetch-happen/pull/38) Include query
+      string in cache key ([@jpb](https://github.com/jpb))
+* [`0ef25b6cd`](https://github.com/npm/cli/commit/0ef25b6cd2921794d36f066e2b11c406342cf167)
+  `libnpmsearch@3.1.0`:
+    * Update to accept query params as options, so we can paginate.
+      ([@nlf](https://github.com/nlf))
+* [`518a66450`](https://github.com/npm/cli/commit/518a664500bcde30475788e8c1c3e651f23e881b)
+  `@npmcli/config@1.2.4`:
+    * Do not allow path options to be set to a boolean `false` value
+* [`3d7aff9d8`](https://github.com/npm/cli/commit/3d7aff9d8dd1cf29956aa306464cd44fbc2af426)
+  update all dependencies using latest npm to install them
+
+### TESTS
+
+* [`2848f5940`](https://github.com/npm/cli/commit/2848f594034b87939bfc5546e3e603f123d98a01)
+  [npm/statusboard#173](https://github.com/npm/statusboard/issues/173)
+  [#2293](https://github.com/npm/cli/issues/2293) npm shrinkwrap
+  ([@ruyadorno](https://github.com/ruyadorno))
+* [`f6824459a`](https://github.com/npm/cli/commit/f6824459ae0c86e2fa9c84b3dcec85f572ae8e1b)
+  [#2302](https://github.com/npm/cli/issues/2302) npm deprecate
+  ([@nlf](https://github.com/nlf))
+* [`b7d74b627`](https://github.com/npm/cli/commit/b7d74b627859f08fca23209d6e0d3ec6657a4489)
+  [npm/statusboard#180](https://github.com/npm/statusboard/issues/180)
+  [#2304](https://github.com/npm/cli/issues/2304) npm unpublish
+  ([@ruyadorno](https://github.com/ruyadorno))
+
+### FEATURES
+
+* [`3db90d944`](https://github.com/npm/cli/commit/3db90d94474f673591811fdab5eb6a5bfdeba261)
+  [#2303](https://github.com/npm/cli/issues/2303) allow for passing object
+  keys to searchopts to allow pagination ([@nlf](https://github.com/nlf))
+
+## 7.1.0 (2020-12-04)
+
+### FEATURES
+
+* [`6b1575110`](https://github.com/npm/cli/commit/6b15751106beb99234aa4bf39ae05cf40076d42a)
+  [#2237](https://github.com/npm/cli/pull/2237)
+  add `npm set-script` command
+  ([@Yash-Singh1](https://github.com/Yash-Singh1))
+* [`15d7333f8`](https://github.com/npm/cli/commit/15d7333f832e3d68ae16895569f27a27ef86573e)
+  add interactive `npm exec`
+  ([@isaacs](https://github.com/isaacs))
+
+### BUG FIXES
+
+* [`2a1192e4b`](https://github.com/npm/cli/commit/2a1192e4b03acdf6e6e24e58de68f736ab9bb35f)
+  [#2202](https://github.com/npm/cli/pull/2202)
+  Do not run interactive `npm exec` in CI when a TTY
+  ([@isaacs](https://github.com/isaacs))
+
+### DOCUMENTATION
+
+* [`0599cc37d`](https://github.com/npm/cli/commit/0599cc37df453bf79d47490eb4fca3cd63f67f80)
+  [#2271](https://github.com/npm/cli/pull/2271)
+  don't wrap code block
+  ([@ethomson](https://github.com/ethomson))
+
+### DEPENDENCIES
+
+* [`def85c726`](https://github.com/npm/cli/commit/def85c72640ffe2d27977c56b7aa06c6f6346ca9)
+  `@npmcli/arborist@1.0.14`
+    * fixes running `npm exec` from file system root folder
+* [`4c94673ab`](https://github.com/npm/cli/commit/4c94673ab5399d27e5a48e52f7a65b038a456265)
+  `semver@7.3.4`
+
+## 7.0.15 (2020-11-27)
+
+### DEPENDENCIES
+
+* [`00e6028ef`](https://github.com/npm/cli/commit/00e6028ef83bf76eaae10241fd7ba59e39768603)
+  `@npmcli/arborist@1.0.13`
+    * do not override user-defined shorthand values when saving `package.json`
+
+### BUG FIXES
+
+* [`9c3413fbc`](https://github.com/npm/cli/commit/9c3413fbcb37e79fc0b3d980e0b5810d7961277c)
+  [#2034](https://github.com/npm/cli/issues/2034)
+  [#2245](https://github.com/npm/cli/issues/2245)
+  `npm link <pkg>` should not save `package.json`
+  ([@ruyadorno](https://github.com/ruyadorno))
+
+### DOCUMENTATION
+
+* [`1875347f9`](https://github.com/npm/cli/commit/1875347f9f4f2b50c28fe8857c5533eeebf42da2)
+  [#2196](https://github.com/npm/cli/issues/2196)
+  remove doc on obsolete `unsafe-perm` flag
+  ([@kaizhu256](https://github.com/kaizhu256))
+* [`f51e50603`](https://github.com/npm/cli/commit/f51e5060340c783a8a00dadd98e5786960caf43f)
+  [#2200](https://github.com/npm/cli/issues/2200)
+  `config.md` cleanup
+  ([@alexwoollam](https://github.com/alexwoollam))
+* [`997cbdb40`](https://github.com/npm/cli/commit/997cbdb400bcd22e457e8a06b69a7be697cfd66d)
+  [#2238](https://github.com/npm/cli/issues/2238)
+  Fix broken link to `package.json` documentation
+  ([@d-fischer](https://github.com/d-fischer))
+* [`9da972dc4`](https://github.com/npm/cli/commit/9da972dc44c21cf0e337f1c3fca44eb9df3e40d5)
+  [#2241](https://github.com/npm/cli/issues/2241)
+  `npm star` docs cleanup
+  ([@ruyadorno](https://github.com/ruyadorno))
+
+## 7.0.14 (2020-11-23)
+
+### DEPENDENCIES
+* [`09d21ab90`](https://github.com/npm/cli/commit/09d21ab903dcfebdfd446b8b29ad46c425b6510e)
+  `@npmcli/run-script@1.8.1`
+    - fix a regression in how scripts are escaped
+
+## 7.0.13 (2020-11-20)
+
+### BUG FIXES
+* [`5fc56b6db`](https://github.com/npm/cli/commit/5fc56b6dbcc7d7d1463a761abb67d2fc16ad3657)
+  [npm/statusboard#174](https://github.com/npm/statusboard/issues/174)
+  [#2204](https://github.com/npm/cli/issues/2204)
+  fix npm unstar command
+  ([@ruyadorno](https://github.com/ruyadorno))
+* [`7842b4d4d`](https://github.com/npm/cli/commit/7842b4d4dca1e076b0d26d554f9dce67484cd7be)
+  [npm/statusboard#182](https://github.com/npm/statusboard/issues/182)
+  [#2205](https://github.com/npm/cli/issues/2205)
+  fix npm version usage output
+  ([@ruyadorno](https://github.com/ruyadorno))
+* [`a0adbf9f8`](https://github.com/npm/cli/commit/a0adbf9f8f77531fcf81ae31bbc7102698765ee3)
+  [#2206](https://github.com/npm/cli/issues/2206)
+  [#2213](https://github.com/npm/cli/issues/2213)
+  fix: fix flatOptions usage in npm init
+  ([@ruyadorno](https://github.com/ruyadorno))
+
+### DEPENDENCIES
+
+* [`3daaf000a`](https://github.com/npm/cli/commit/3daaf000aee0ba81af855977d7011850e79099e6)
+  `@npmcli/arborist@1.0.12`
+    - fixes some windows specific bugs in how paths are handled and compared
+
+### DOCUMENTATION
+
+* [`084a7b6ad`](https://github.com/npm/cli/commit/084a7b6ad6eaf9f2d92eb05da93e745f5357cce2)
+  [#2210](https://github.com/npm/cli/issues/2210)
+  docs: Fix typo
+  ([@HollowMan6](https://github.com/HollowMan6))
+
+## 7.0.12 (2020-11-17)
+
+### BUG FIXES
+
+* [`7b89576bd`](https://github.com/npm/cli/commit/7b89576bd1fa557a312a841afa66b895558d1b12)
+  [#2174](https://github.com/npm/cli/issues/2174)
+  fix running empty scripts with `npm run-script`
+  ([@nlf](https://github.com/nlf))
+* [`bc9afb195`](https://github.com/npm/cli/commit/bc9afb195f5aad7c06bc96049c0f00dc8e752dee)
+  [#2002](https://github.com/npm/cli/issues/2002)
+  [#2184](https://github.com/npm/cli/issues/2184)
+  Preserve builtin conf when installing npm globally
+  ([@isaacs](https://github.com/isaacs))
+
+### DEPENDENCIES
+
+* [`b74c05d88`](https://github.com/npm/cli/commit/b74c05d88dc48fabef031ea66ffaa4e548845655)
+  `@npmcli/run-script@1.8.0`
+    * fix windows command-line argument escaping
+
+### DOCUMENTATION
+
+* [`4e522fdc9`](https://github.com/npm/cli/commit/4e522fdc917bc85af2ca8ff7669a0178e2f35123)
+  [#2179](https://github.com/npm/cli/issues/2179)
+  remove mention to --parseable option from `npm audit` docs
+  ([@Primajin](https://github.com/Primajin))
+
 ## 7.0.11 (2020-11-13)
 
 ### DEPENDENCIES
@@ -686,7 +1049,7 @@
     * fix package.json dependencies order
 * [`49b2bf5a7`](https://github.com/npm/cli/commit/49b2bf5a798b49d52166744088a80b8a39ccaeb6)
   `@npmcli/config@1.1.8`
-    * fix unkown envs to be passed through
+    * fix unknown envs to be passed through
     * fix setting correct globalPrefix on load
 * [`f9aac351d`](https://github.com/npm/cli/commit/f9aac351dd36a19d14e1f951a2e8e20b41545822)
   `libnpmversion@1.0.5`

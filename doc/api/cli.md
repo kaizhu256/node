@@ -210,7 +210,7 @@ changes:
     description: --experimental-abortcontroller is no longer required.
 -->
 
-Experimental `AbortController` and `AbortSignal` support is enabled by default.
+`AbortController` and `AbortSignal` support is enabled by default.
 Use of this command-line flag is no longer required.
 
 ### `--experimental-import-meta-resolve`
@@ -300,14 +300,14 @@ Enable experimental WebAssembly System Interface (WASI) support.
 added: v12.3.0
 -->
 
+Enable experimental WebAssembly module support.
+
 ### `--force-context-aware`
 <!-- YAML
 added: v12.12.0
 -->
 
 Disable loading native addons that are not [context-aware][].
-
-Enable experimental WebAssembly module support.
 
 ### `--force-fips`
 <!-- YAML
@@ -1059,8 +1059,13 @@ Track heap object allocations for heap snapshots.
 ### `--unhandled-rejections=mode`
 <!-- YAML
 added:
- - v12.0.0
- - v10.17.0
+  - v12.0.0
+  - v10.17.0
+changes:
+  - version: v15.0.0
+    pr-url: https://github.com/nodejs/node/pull/33021
+    description: Changed default mode to `throw`. Previously, a warning was
+                 emitted.
 -->
 
 Using this flag allows to change what should happen when an unhandled rejection
@@ -1205,6 +1210,9 @@ Preload the specified module at startup.
 
 Follows `require()`'s module resolution
 rules. `module` may be either a path to a file, or a node module name.
+
+Only CommonJS modules are supported. Attempting to preload a
+ES6 Module using `--require` will fail with an error.
 
 ### `-v`, `--version`
 <!-- YAML

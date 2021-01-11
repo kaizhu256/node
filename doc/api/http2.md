@@ -2,6 +2,9 @@
 <!-- YAML
 added: v8.4.0
 changes:
+  - version: v15.3.0
+    pr-url: https://github.com/nodejs/node/pull/36070
+    description: It is possible to abort a request with an AbortSignal.
   - version: v15.0.0
     pr-url: https://github.com/nodejs/node/pull/34664
     description: Requests with the `host` header (with or without
@@ -521,7 +524,7 @@ A prototype-less object describing the current remote settings of this
 
 #### `http2session.setLocalWindowSize(windowSize)`
 <!-- YAML
-added: REPLACEME
+added: v15.3.0
 -->
 
 * `windowSize` {number}
@@ -846,6 +849,8 @@ added: v8.4.0
     and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the
     `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `signal` {AbortSignal} An AbortSignal that may be used to abort an ongoing
+    request.
 
 * Returns: {ClientHttp2Stream}
 
@@ -881,6 +886,10 @@ When `options.waitForTrailers` is set, the `Http2Stream` will not automatically
 close when the final `DATA` frame is transmitted. User code must call either
 `http2stream.sendTrailers()` or `http2stream.close()` to close the
 `Http2Stream`.
+
+When `options.signal` is set with an `AbortSignal` and then `abort` on the
+corresponding `AbortController` is called, the request will emit an `'error'`
+event with an `AbortError` error.
 
 The `:method` and `:path` pseudo-headers are not specified within `headers`,
 they respectively default to:
@@ -2544,7 +2553,7 @@ console.log(packed.toString('base64'));
 added: v8.4.0
 -->
 
-* `buf` {Buffer|Uint8Array} The packed settings.
+* `buf` {Buffer|TypedArray} The packed settings.
 * Returns: {HTTP/2 Settings Object}
 
 Returns a [HTTP/2 Settings Object][] containing the deserialized settings from
@@ -3274,6 +3283,25 @@ deprecated: v13.0.0
 
 See [`response.socket`][].
 
+#### `response.createPushResponse(headers, callback)`
+<!-- YAML
+added: v8.4.0
+-->
+
+* `headers` {HTTP/2 Headers Object} An object describing the headers
+* `callback` {Function} Called once `http2stream.pushStream()` is finished,
+  or either when the attempt to create the pushed `Http2Stream` has failed or
+  has been rejected, or the state of `Http2ServerRequest` is closed prior to
+  calling the `http2stream.pushStream()` method
+  * `err` {Error}
+  * `res` {http2.Http2ServerResponse} The newly-created `Http2ServerResponse`
+    object
+
+Call [`http2stream.pushStream()`][] with the given headers, and wrap the
+given [`Http2Stream`][] on a newly created `Http2ServerResponse` as the callback
+parameter if successful. When `Http2ServerRequest` is closed, the callback is
+called with an error `ERR_HTTP2_INVALID_STREAM`.
+
 #### `response.end([data[, encoding]][, callback])`
 <!-- YAML
 added: v8.4.0
@@ -3670,24 +3698,6 @@ const server = http2.createServer((req, res) => {
 
 Attempting to set a header field name or value that contains invalid characters
 will result in a [`TypeError`][] being thrown.
-
-#### `response.createPushResponse(headers, callback)`
-<!-- YAML
-added: v8.4.0
--->
-
-* `headers` {HTTP/2 Headers Object} An object describing the headers
-* `callback` {Function} Called once `http2stream.pushStream()` is finished,
-  or either when the attempt to create the pushed `Http2Stream` has failed or
-  has been rejected, or the state of `Http2ServerRequest` is closed prior to
-  calling the `http2stream.pushStream()` method
-  * `err` {Error}
-  * `stream` {ServerHttp2Stream} The newly-created `ServerHttp2Stream` object
-
-Call [`http2stream.pushStream()`][] with the given headers, and wrap the
-given [`Http2Stream`][] on a newly created `Http2ServerResponse` as the callback
-parameter if successful. When `Http2ServerRequest` is closed, the callback is
-called with an error `ERR_HTTP2_INVALID_STREAM`.
 
 ## Collecting HTTP/2 performance metrics
 

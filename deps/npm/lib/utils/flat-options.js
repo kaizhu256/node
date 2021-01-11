@@ -3,6 +3,7 @@
 
 const log = require('npmlog')
 const crypto = require('crypto')
+const querystring = require('querystring')
 const npmSession = crypto.randomBytes(8).toString('hex')
 log.verbose('npm-session', npmSession)
 const { join } = require('path')
@@ -26,6 +27,13 @@ const buildOmitList = obj => {
     omit.add('optional')
 
   obj.omit = [...omit]
+
+  // it would perhaps make more sense to put this in @npmcli/config, but
+  // since we can set dev to be omitted in multiple various legacy ways,
+  // it's better to set it here once it's all resolved.
+  if (obj.omit.includes('dev'))
+    process.env.NODE_ENV = 'production'
+
   return [...omit]
 }
 
@@ -42,8 +50,6 @@ const flatten = obj => ({
   cache: join(obj.cache, '_cacache'),
   global: obj.global,
 
-  metricsRegistry: obj['metrics-registry'] || obj.registry,
-  sendMetrics: obj['send-metrics'],
   registry: obj.registry,
   scope: obj.scope,
   access: obj.access,
@@ -92,7 +98,7 @@ const flatten = obj => ({
     description: obj.description,
     exclude: obj.searchexclude,
     limit: obj.searchlimit || 20,
-    opts: obj.searchopts,
+    opts: querystring.parse(obj.searchopts),
     staleness: obj.searchstaleness,
   },
 

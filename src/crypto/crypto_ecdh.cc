@@ -52,9 +52,7 @@ void ECDH::Initialize(Environment* env, Local<Object> target) {
   env->SetProtoMethod(t, "setPublicKey", SetPublicKey);
   env->SetProtoMethod(t, "setPrivateKey", SetPrivateKey);
 
-  target->Set(env->context(),
-              FIXED_ONE_BYTE_STRING(env->isolate(), "ECDH"),
-              t->GetFunction(env->context()).ToLocalChecked()).Check();
+  env->SetConstructorFunction(target, "ECDH", t);
 
   env->SetMethodNoSideEffect(target, "ECDHConvertKey", ECDH::ConvertKey);
   env->SetMethodNoSideEffect(target, "getCurves", ECDH::GetCurves);
@@ -680,7 +678,7 @@ std::shared_ptr<KeyObjectData> ImportJWKEcKey(
   if (!x_value->IsString() ||
       !y_value->IsString() ||
       (!d_value->IsUndefined() && !d_value->IsString())) {
-    THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JSK EC key");
+    THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JWK EC key");
     return std::shared_ptr<KeyObjectData>();
   }
 
@@ -688,7 +686,7 @@ std::shared_ptr<KeyObjectData> ImportJWKEcKey(
 
   ECKeyPointer ec(EC_KEY_new_by_curve_name(nid));
   if (!ec) {
-    THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JSK EC key");
+    THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JWK EC key");
     return std::shared_ptr<KeyObjectData>();
   }
 
@@ -699,14 +697,14 @@ std::shared_ptr<KeyObjectData> ImportJWKEcKey(
           ec.get(),
           x.ToBN().get(),
           y.ToBN().get())) {
-    THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JSK EC key");
+    THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JWK EC key");
     return std::shared_ptr<KeyObjectData>();
   }
 
   if (type == kKeyTypePrivate) {
     ByteSource d = ByteSource::FromEncodedString(env, d_value.As<String>());
     if (!EC_KEY_set_private_key(ec.get(), d.ToBN().get())) {
-      THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JSK EC key");
+      THROW_ERR_CRYPTO_INVALID_JWK(env, "Invalid JWK EC key");
       return std::shared_ptr<KeyObjectData>();
     }
   }

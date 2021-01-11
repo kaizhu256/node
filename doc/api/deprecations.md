@@ -717,7 +717,7 @@ changes:
 
 Type: Documentation-only
 
-The [`EventEmitter.listenerCount(emitter, eventName)`][] API is
+The [`events.listenerCount(emitter, eventName)`][] API is
 deprecated. Please use [`emitter.listenerCount(eventName)`][] instead.
 
 ### DEP0034: `fs.exists(path, callback)`
@@ -2699,6 +2699,19 @@ resolutions not in `node_modules`. This means there will not be deprecation
 warnings for `"exports"` in dependencies. With `--pending-deprecation`, a
 runtime warning results no matter where the `"exports"` usage occurs.
 
+<a id="DEP0148"></a>
+### DEP0148: `http.IncomingMessage#connection`
+<!-- YAML
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/33768
+    description: Documentation-only deprecation.
+ -->
+
+Type: Documentation-only.
+
+Prefer [`message.socket`][] over [`message.connection`][].
+
 [Legacy URL API]: url.md#url_legacy_url_api
 [NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
 [RFC 6066]: https://tools.ietf.org/html/rfc6066#section-3
@@ -2712,7 +2725,6 @@ runtime warning results no matter where the `"exports"` usage occurs.
 [`Buffer.isBuffer()`]: buffer.md#buffer_static_method_buffer_isbuffer_obj
 [`Cipher`]: crypto.md#crypto_class_cipher
 [`Decipher`]: crypto.md#crypto_class_decipher
-[`EventEmitter.listenerCount(emitter, eventName)`]: events.md#events_eventemitter_listenercount_emitter_eventname
 [`REPLServer.clearBufferedCommand()`]: repl.md#repl_replserver_clearbufferedcommand
 [`ReadStream.open()`]: fs.md#fs_class_fs_readstream
 [`Server.getConnections()`]: net.md#net_server_getconnections_callback
@@ -2741,6 +2753,7 @@ runtime warning results no matter where the `"exports"` usage occurs.
 [`domain`]: domain.md
 [`ecdh.setPublicKey()`]: crypto.md#crypto_ecdh_setpublickey_publickey_encoding
 [`emitter.listenerCount(eventName)`]: events.md#events_emitter_listenercount_eventname
+[`events.listenerCount(emitter, eventName)`]: events.md#events_events_listenercount_emitter_eventname
 [`fs.FileHandle`]: fs.md#fs_class_filehandle
 [`fs.access()`]: fs.md#fs_fs_access_path_mode_callback
 [`fs.createReadStream()`]: fs.md#fs_fs_createreadstream_path_options
@@ -2757,6 +2770,8 @@ runtime warning results no matter where the `"exports"` usage occurs.
 [`http.request()`]: http.md#http_http_request_options_callback
 [`https.get()`]: https.md#https_https_get_options_callback
 [`https.request()`]: https.md#https_https_request_options_callback
+[`message.connection`]: http.md#http_message_connection
+[`message.socket`]: http.md#http_message_socket
 [`module.createRequire()`]: module.md#module_module_createrequire_filename
 [`os.networkInterfaces()`]: os.md#os_os_networkinterfaces
 [`os.tmpdir()`]: os.md#os_os_tmpdir

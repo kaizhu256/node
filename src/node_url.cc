@@ -1429,7 +1429,7 @@ void URL::Parse(const char* input,
     const char ch = p < end ? p[0] : kEOL;
     bool special = (url->flags & URL_FLAGS_SPECIAL);
     bool cannot_be_base;
-    const bool special_back_slash = (special && ch == '\\');
+    bool special_back_slash = (special && ch == '\\');
 
     switch (state) {
       case kSchemeStart:
@@ -1477,6 +1477,7 @@ void URL::Parse(const char* input,
             url->flags &= ~URL_FLAGS_SPECIAL;
             special = false;
           }
+          special_back_slash = (special && ch == '\\');
           buffer.clear();
           if (has_state_override)
             return;
@@ -1521,6 +1522,7 @@ void URL::Parse(const char* input,
             url->flags &= ~URL_FLAGS_SPECIAL;
             special = false;
           }
+          special_back_slash = (special && ch == '\\');
           if (base->flags & URL_FLAGS_HAS_PATH) {
             url->flags |= URL_FLAGS_HAS_PATH;
             url->path = base->path;
@@ -1544,6 +1546,7 @@ void URL::Parse(const char* input,
           url->flags |= URL_FLAGS_SPECIAL;
           special = true;
           state = kFile;
+          special_back_slash = (special && ch == '\\');
           continue;
         }
         break;
@@ -1573,6 +1576,7 @@ void URL::Parse(const char* input,
           url->flags &= ~URL_FLAGS_SPECIAL;
           special = false;
         }
+        special_back_slash = (special && ch == '\\');
         switch (ch) {
           case kEOL:
             if (base->flags & URL_FLAGS_HAS_USERNAME) {
@@ -2080,6 +2084,48 @@ void URL::Parse(const char* input,
     p++;
   }
 }  // NOLINT(readability/fn_size)
+
+// https://url.spec.whatwg.org/#url-serializing
+std::string URL::SerializeURL(const struct url_data* url,
+                              bool exclude = false) {
+  std::string output = url->scheme;
+  if (url->flags & URL_FLAGS_HAS_HOST) {
+    output += "//";
+    if (url->flags & URL_FLAGS_HAS_USERNAME ||
+        url->flags & URL_FLAGS_HAS_PASSWORD) {
+      if (url->flags & URL_FLAGS_HAS_USERNAME) {
+        output += url->username;
+      }
+      if (url->flags & URL_FLAGS_HAS_PASSWORD) {
+        output += ":" + url->password;
+      }
+      output += "@";
+    }
+    output += url->host;
+    if (url->port != -1) {
+      output += ":" + std::to_string(url->port);
+    }
+  }
+  if (url->flags & URL_FLAGS_CANNOT_BE_BASE) {
+    output += url->path[0];
+  } else {
+    if (!(url->flags & URL_FLAGS_HAS_HOST) &&
+          url->path.size() > 1 &&
+          url->path[0].empty()) {
+      output += "/.";
+    }
+    for (size_t i = 1; i < url->path.size(); i++) {
+      output += "/" + url->path[i];
+    }
+  }
+  if (url->flags & URL_FLAGS_HAS_QUERY) {
+    output = "?" + url->query;
+  }
+  if (!exclude && url->flags & URL_FLAGS_HAS_FRAGMENT) {
+    output = "#" + url->fragment;
+  }
+  return output;
+}
 
 namespace {
 void SetArgs(Environment* env,

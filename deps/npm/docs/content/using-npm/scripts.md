@@ -24,7 +24,7 @@ To create "pre" or "post" scripts for any scripts defined in the `"scripts"` sec
 
 ### Life Cycle Scripts
 
-There are some special life cycle scripts that happen only in certain situations. These scripts happen in addtion to the "pre" and "post" script.
+There are some special life cycle scripts that happen only in certain situations. These scripts happen in addition to the "pre" and "post" script.
 * `prepare`, `prepublish`, `prepublishOnly`, `prepack`, `postpack`
 
 **prepare** (since `npm@4.0.0`)
@@ -122,10 +122,8 @@ npm will default some script values based on package contents.
 
 ### User
 
-If npm was invoked with root privileges, then it will change the uid
-to the user account or uid specified by the `user` config, which
-defaults to `nobody`.  Set the `unsafe-perm` flag to run scripts with
-root privileges.
+When npm is run as root, scripts are always run with the effective uid
+and gid of the working directory owner.
 
 ### Environment
 

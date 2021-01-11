@@ -40,6 +40,10 @@ const customTypesMap = {
   'WebAssembly.Instance':
     `${jsDocPrefix}Reference/Global_Objects/WebAssembly/Instance`,
 
+  'BroadcastChannel':
+    'worker_threads.html#worker_threads_class_broadcastchannel_' +
+    'extends_eventtarget',
+
   'Iterable':
     `${jsDocPrefix}Reference/Iteration_protocols#The_iterable_protocol`,
   'Iterator':
@@ -212,6 +216,8 @@ const customTypesMap = {
   'vm.SourceTextModule': 'vm.html#vm_class_vm_sourcetextmodule',
 
   'MessagePort': 'worker_threads.html#worker_threads_class_messageport',
+
+  'X509Certificate': 'crypto.html#crypto_class_x509certificate',
 
   'zlib options': 'zlib.html#zlib_class_options',
 };
