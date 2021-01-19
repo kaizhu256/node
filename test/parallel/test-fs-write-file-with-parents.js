@@ -123,7 +123,7 @@ tmpdir.refresh();
   // with lazy-mkdirp.
   [
     'open'
-  ].forEach((functionName) => {
+  ].forEach(async (functionName) => {
     const functionNameSync = functionName + 'Sync';
     // Test async lazy-mkdirp multiple times to ensure EEXIST is ignored.
     [
@@ -148,6 +148,20 @@ tmpdir.refresh();
       path.join(tmpdir.path, functionNameSync + '/mkdirp/test4.txt')
     ].forEach((pathname) => {
       const fd = fs[functionNameSync](pathname, {
+        flag: 'w',
+        parents: true
+      });
+      // cleanup fd
+      fs.close(fd, common.mustSucceed(() => {}));
+    });
+    // Test promisified lazy-mkdirp multiple times to ensure EEXIST is ignored.
+    [
+      path.join(tmpdir.path, functionName + 'Promisified/mkdirp/test1.txt'),
+      path.join(tmpdir.path, functionName + 'Promisified/mkdirp/test2.txt'),
+      path.join(tmpdir.path, functionName + 'Promisified/mkdirp/test3.txt'),
+      path.join(tmpdir.path, functionName + 'Promisified/mkdirp/test4.txt')
+    ].forEach((pathname) => {
+      const fd = await fs.promises[functionName](pathname, {
         flag: 'w',
         parents: true
       });
