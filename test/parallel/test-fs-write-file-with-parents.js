@@ -158,7 +158,7 @@ tmpdir.refresh();
 }
 
 {
-  // Test open, openSync
+  // Test open, openSync, fs.promises.open
   // will disable option mkdirp for flags missing O_CREAT.
   [
     'open'
@@ -171,7 +171,7 @@ tmpdir.refresh();
       'r+',  // O_RDWR
       'rs+', // Fall through.
       'sr+'  // O_RDWR | O_SYNC
-    ].forEach((flag) => {
+    ].forEach(async (flag) => {
       // Test fs.open(..., { flag: 'r', parents: 'true' }, callback)
       // fails with 'ENOENT'.
       fs[functionName](
@@ -190,6 +190,18 @@ tmpdir.refresh();
           { flag, parents: 'true' },
         );
         throw new Error('fs.' + functionNameSync + ' should have failed.');
+      } catch (errCaught) {
+        // Validate error 'ENOENT'.
+        assert.strictEqual(errCaught.code, 'ENOENT');
+      }
+      // Test fs.promises.open(..., { flag: 'r', parents: 'true' })
+      // fails with 'ENOENT'.
+      try {
+        await fs.promises[functionName](
+          path.join(tmpdir.path, 'enoent/enoent/test.txt'),
+          { flag, parents: 'true' },
+        );
+        throw new Error('fs.' + functionName + ' should have failed.');
       } catch (errCaught) {
         // Validate error 'ENOENT'.
         assert.strictEqual(errCaught.code, 'ENOENT');
