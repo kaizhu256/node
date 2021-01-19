@@ -123,7 +123,7 @@ tmpdir.refresh();
   // with lazy-mkdirp.
   [
     'open'
-  ].forEach(async (functionName) => {
+  ].forEach((functionName) => {
     const functionNameSync = functionName + 'Sync';
     // Test async lazy-mkdirp multiple times to ensure EEXIST is ignored.
     [
@@ -160,7 +160,7 @@ tmpdir.refresh();
       path.join(tmpdir.path, functionName + 'Promisified/mkdirp/test2.txt'),
       path.join(tmpdir.path, functionName + 'Promisified/mkdirp/test3.txt'),
       path.join(tmpdir.path, functionName + 'Promisified/mkdirp/test4.txt')
-    ].forEach((pathname) => {
+    ].forEach(async (pathname) => {
       const fd = await fs.promises[functionName](pathname, {
         flag: 'w',
         parents: true
